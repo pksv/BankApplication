@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/insurance"
+        android:icon="@mipmap/insurance_icon"
+        android:title="@string/insurance_subscription" />
+
+    <item
+        android:id="@+id/sendMoney"
+        android:icon="@mipmap/send_money"
+        android:title="@string/send_money" />
+
+    <item
+        android:id="@+id/loan"
+        android:icon="@drawable/ic_loan"
+        android:title="@string/loan_application" />
+
+    <item
+        android:id="@+id/terms"
+        android:icon="@mipmap/ic_terms"
+        android:title="@string/terms" />
+
+    <item
+        android:id="@+id/licences"
+        android:icon="@drawable/ic_licences"
+        android:title="@string/licences" />
+
+</menu>
