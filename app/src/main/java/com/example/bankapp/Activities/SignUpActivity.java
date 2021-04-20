@@ -8,19 +8,21 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bankapp.R;
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText etEmail, etAccount, etPhone, etPassword, etCPassword;
     private Button btnSignUp;
     private String email, password, cPassword,account, phone;
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         initViews();
-
+        setSupportActionBar(toolbar);
 
         btnSignUp.setOnClickListener(v -> {
             email = etEmail.getText().toString();
@@ -45,5 +47,6 @@ public class SignUpActivity extends AppCompatActivity {
         etPhone = findViewById(R.id.etPhone);
         etEmail = findViewById(R.id.etEmail);
         btnSignUp = findViewById(R.id.btnSignUp);
+        toolbar = findViewById(R.id.toolbar);
     }
 }
