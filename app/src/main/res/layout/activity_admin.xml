@@ -12,7 +12,16 @@
         android:layout_height="wrap_content"
         android:background="@color/design_default_color_primary"
         android:elevation="5dp"
-        app:title="@string/admin_page" />
+        app:title="@string/admin_page">
+
+        <ImageView
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/ic_logout"
+            android:contentDescription="@string/logout" />
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent"
