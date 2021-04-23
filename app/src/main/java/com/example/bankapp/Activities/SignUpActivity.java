@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bankapp.Database.DataBaseHelper;
+import com.example.bankapp.Database.LoginPreferences;
 import com.example.bankapp.Database.User;
 import com.example.bankapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -19,9 +20,9 @@ import java.sql.SQLException;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText etEmail, etAccount, etPhone, etPassword, etCPassword;
+    private EditText etEmail, etAccount, etPhone, etPassword, etCPassword, etName;
     private Button btnSignUp;
-    private String email, password, cPassword, account, phone;
+    private String email, password, cPassword, account, phone, name;
     private MaterialToolbar toolbar;
 
     @Override
@@ -33,10 +34,16 @@ public class SignUpActivity extends AppCompatActivity {
 
         btnSignUp.setOnClickListener(v -> {
             email = etEmail.getText().toString();
+            name = etName.getText().toString();
             password = etPassword.getText().toString();
             cPassword = etCPassword.getText().toString();
             account = etAccount.getText().toString();
             phone = etPhone.getText().toString();
+
+            if (name.isEmpty()) {
+                Toast.makeText(this, "Please fill Name", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (email.isEmpty()) {
                 Toast.makeText(this, "Please fill Email Id", Toast.LENGTH_SHORT).show();
@@ -73,25 +80,39 @@ public class SignUpActivity extends AppCompatActivity {
                 return;
             }
 
-            // TODO: 22-04-2021 duplicate copies check
+            User existing = DataBaseHelper.getInstance().getUserDAO().findByEmail(email);
+            if (existing != null) {
+                Toast.makeText(this, "Entered email id already exists", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            existing = DataBaseHelper.getInstance().getUserDAO().findByAccount(account);
+            if (existing != null) {
+                Toast.makeText(this, "Entered account already exists", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             User user = new User();
             user.setEmail(email);
             user.setAccountNo(account);
             user.setPassword(password);
             user.setPhoneNumber(phone);
+            user.setName(name);
 
             try {
                 DataBaseHelper.getInstance().getUserDAO().createOrUpdate(user);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            LoginPreferences.getInstance().setUserId(email);
+            LoginPreferences.getInstance().setName(user.getName());
             Intent intent = new Intent(SignUpActivity.this, UserActivity.class);
             startActivity(intent);
-
+//            finish();
         });
     }
 
     private void initViews() {
+        etName = findViewById(R.id.etName);
         etAccount = findViewById(R.id.etAccount);
         etPassword = findViewById(R.id.etPassword);
         etCPassword = findViewById(R.id.etConfirmPassword);

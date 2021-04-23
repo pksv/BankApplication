@@ -41,4 +41,5 @@
     <string name="home">Home</string>
     <string name="amount">Amount</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="name">Name</string>
 </resources>

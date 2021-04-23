@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.bankapp.Database.DataBaseHelper;
+import com.example.bankapp.Database.LoginPreferences;
 import com.example.bankapp.Database.User;
 import com.example.bankapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (email.equals("pksv@admin") && password.equals("pksv")) {
+                LoginPreferences.getInstance().setUserId("pksv@admin");
+                LoginPreferences.getInstance().setName("admin");
                 intent = new Intent(MainActivity.this, AdminActivity.class);
             } else {
                 User user = DataBaseHelper.getInstance().getUserDAO().findByEmail(email);
@@ -72,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, "Invalid Password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                LoginPreferences.getInstance().setUserId(email);
+                LoginPreferences.getInstance().setName(user.getName());
                 intent = new Intent(MainActivity.this, UserActivity.class);
             }
             startActivity(intent);
@@ -86,12 +91,5 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.btnSignUp);
         signUp = findViewById(R.id.tvSignUp);
         toolbar = findViewById(R.id.toolbar);
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        super.onBackPressed();
     }
 }

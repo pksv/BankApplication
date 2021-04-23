@@ -55,6 +55,14 @@ public class User implements Serializable {
     @DatabaseField(columnName = UPDATED_DATE, canBeNull = false)
     private Date updatedDate = new Date();
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getId() {
         return id;
     }
