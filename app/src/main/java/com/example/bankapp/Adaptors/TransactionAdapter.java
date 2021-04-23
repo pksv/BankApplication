@@ -43,10 +43,11 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             holder.transactionId.setText(transaction.getId());
             holder.sentAmount.setText(String.valueOf(transaction.getAmount()));
             holder.sentDate.setText(String.valueOf(transaction.getCreatedDate()));
-            holder.toAccNo.setText(transaction.getSender());
             if (transaction.getReceiver().equals(user.getId())) {
+                holder.toAccNo.setText(transaction.getSender());
                 holder.sentOrReceived.setText("Received");
             } else {
+                holder.toAccNo.setText(transaction.getReceiver());
                 holder.sentOrReceived.setText("Sent");
             }
         }

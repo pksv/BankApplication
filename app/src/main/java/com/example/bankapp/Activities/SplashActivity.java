@@ -9,6 +9,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.bankapp.Database.SharedPreferences.LoginPreferences;
 import com.example.bankapp.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -25,19 +26,22 @@ public class SplashActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
         }
 
-        mWaitHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-
-                    finish();
-                } catch (Exception ignored) {
-                    ignored.printStackTrace();
-                }
+        mWaitHandler.postDelayed(() -> {
+            if (LoginPreferences.getInstance().getUserId().isEmpty()) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            } else if (LoginPreferences.getInstance().getUserId().equals("pksv@admin")) {
+                Intent intent = new Intent(this, AdminActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(this, UserHome.class);
+                startActivity(intent);
+                finish();
             }
-        }, 5000);
+
+        }, 3000);
     }
 
     @Override

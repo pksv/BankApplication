@@ -139,7 +139,7 @@ public class InsuranceActivity extends AppCompatActivity {
     }
 
     private void initBottomNavMenu() {
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.insurance);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home:

@@ -8,12 +8,12 @@
     <application
         android:name=".Application"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.BankApp">
-        <activity android:name=".Activities.TransactionActivity"></activity>
+        <activity android:name=".Activities.TransactionActivity" />
         <activity android:name=".Activities.LoanActivity" />
         <activity android:name=".Activities.InsuranceActivity" />
         <activity android:name=".Activities.SplashActivity">

@@ -119,7 +119,7 @@ public class LoanActivity extends AppCompatActivity {
     }
 
     private void initBottomNavMenu() {
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.loan);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.insurance:
@@ -154,5 +154,12 @@ public class LoanActivity extends AppCompatActivity {
         noLoanHistory = findViewById(R.id.noLoanHistory);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         logout = findViewById(R.id.logout);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent homeIntent = new Intent(this, UserHome.class);
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(homeIntent);
     }
 }

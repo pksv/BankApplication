@@ -15,11 +15,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bankapp.Database.DataBaseHelper;
+import com.example.bankapp.Database.SharedPreferences.AdminPreferences;
 import com.example.bankapp.Database.SharedPreferences.LoginPreferences;
+import com.example.bankapp.Database.Transaction;
 import com.example.bankapp.Database.User;
 import com.example.bankapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.sql.SQLException;
 
 public class UserHome extends AppCompatActivity {
 
@@ -89,6 +93,43 @@ public class UserHome extends AppCompatActivity {
         tvAccount.setText(String.format("Account Number : %s", user.getAccountNo()));
         tvBsrBal.setText(String.format("BSR Balance : %s", user.getBsrBal()));
 
+        send.setOnClickListener(v -> {
+            String amt = sendingAmount.getText().toString();
+            String acc = receiverAcc.getText().toString();
+            if (amt.isEmpty()) {
+                Toast.makeText(this, "Please enter the amount to be sent", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (user.getBsrBal() < Double.parseDouble(amt)) {
+                Toast.makeText(this, "Insufficient Balance", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (acc.isEmpty()) {
+                Toast.makeText(this, "Please enter receiver's account number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            User receiver = DataBaseHelper.getInstance().getUserDAO().findByAccount(acc);
+            if (receiver == null) {
+                Toast.makeText(this, "Receiver account not valid", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            receiver.setBsrBal(receiver.getBsrBal() + Double.parseDouble(amt));
+            user.setBsrBal(user.getBsrBal() - Double.parseDouble(amt) - 0.5);
+            AdminPreferences.getInstance().setBal(AdminPreferences.getInstance().getBal() + 0.5);
+            Transaction transaction = new Transaction();
+            transaction.setAmount(Double.parseDouble(amt));
+            transaction.setReceiver(receiver.getId());
+            transaction.setSender(user.getId());
+            transaction.setSuccessful(true);
+            try {
+                DataBaseHelper.getInstance().getTransactionDAO().createOrUpdate(transaction);
+                DataBaseHelper.getInstance().getUserDAO().createOrUpdate(user);
+                DataBaseHelper.getInstance().getUserDAO().createOrUpdate(receiver);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
         logout.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -132,6 +173,9 @@ public class UserHome extends AppCompatActivity {
         tvBal = findViewById(R.id.tvBal);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         currencySpinner = findViewById(R.id.currencySpinner);
+        send = findViewById(R.id.send);
+        sendingAmount = findViewById(R.id.sendingAmount);
+        receiverAcc = findViewById(R.id.receiverAcc);
     }
 
     @Override

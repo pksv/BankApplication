@@ -46,6 +46,8 @@
     <string name="enter_receiver_account_no">Enter Receiver Account No.</string>
     <string name="send">Send</string>
     <string name="enter_amount_to_be_sent">Enter Amount to be Sent</string>
+    <string name="bsr_logo">BSR Logo</string>
+    <string name="bsr_banking_application">BSR Banking Application</string>
     <string-array name="currency">
         <item>USD</item>
         <item>INR</item>

@@ -60,7 +60,7 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     private void initBottomNavMenu() {
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.transactionHistory);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.insurance:
@@ -91,6 +91,7 @@ public class TransactionActivity extends AppCompatActivity {
         noTransaction = findViewById(R.id.noTransaction);
         recyclerView = findViewById(R.id.recyclerView);
         svRecyclerView = findViewById(R.id.svRecyclerView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
     }
 
     @Override
