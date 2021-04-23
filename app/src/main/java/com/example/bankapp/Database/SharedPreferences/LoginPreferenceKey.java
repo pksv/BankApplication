@@ -1,4 +1,4 @@
-package com.example.bankapp.Database;
+package com.example.bankapp.Database.SharedPreferences;
 
 public enum LoginPreferenceKey {
     USER_ID("user_id"), NAME("name");

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.bankapp.Database.DataBaseHelper;
-import com.example.bankapp.Database.LoginPreferences;
+import com.example.bankapp.Database.SharedPreferences.LoginPreferences;
 import com.example.bankapp.Database.User;
 import com.example.bankapp.R;
 import com.google.android.material.appbar.MaterialToolbar;

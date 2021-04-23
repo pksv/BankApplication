@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bankapp.Database.DataBaseHelper;
-import com.example.bankapp.Database.LoginPreferences;
+import com.example.bankapp.Database.SharedPreferences.LoginPreferences;
 import com.example.bankapp.Database.User;
 import com.example.bankapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -106,8 +106,8 @@ public class SignUpActivity extends AppCompatActivity {
             LoginPreferences.getInstance().setUserId(email);
             LoginPreferences.getInstance().setName(user.getName());
             Intent intent = new Intent(SignUpActivity.this, UserActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-//            finish();
         });
     }
 

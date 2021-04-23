@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bankapp.Database.AdminPreferences;
 import com.example.bankapp.Database.DataBaseHelper;
+import com.example.bankapp.Database.SharedPreferences.AdminPreferences;
 import com.example.bankapp.Database.User;
 import com.example.bankapp.R;
 import com.google.android.material.appbar.MaterialToolbar;

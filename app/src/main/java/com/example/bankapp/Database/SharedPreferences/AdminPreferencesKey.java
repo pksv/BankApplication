@@ -1,4 +1,4 @@
-package com.example.bankapp.Database;
+package com.example.bankapp.Database.SharedPreferences;
 
 public enum AdminPreferencesKey {
     BSR_RATE("bsr_rate"), BAL("bal");

@@ -1,6 +1,7 @@
-package com.example.bankapp.Database;
+package com.example.bankapp.Database.DAO;
 
 
+import com.example.bankapp.Database.User;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
 
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 
 public class UserDAO extends BaseDaoImpl<User, String> {
 
-    protected UserDAO(ConnectionSource connectionSource, Class<User> dataClass) throws SQLException {
+    public UserDAO(ConnectionSource connectionSource, Class<User> dataClass) throws SQLException {
         super(connectionSource, dataClass);
     }
 
@@ -29,5 +30,4 @@ public class UserDAO extends BaseDaoImpl<User, String> {
         }
         return null;
     }
-
 }
