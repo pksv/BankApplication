@@ -3,6 +3,7 @@ package com.example.bankapp.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,11 +25,12 @@ public class UserActivity extends AppCompatActivity {
         logout.setOnClickListener(v -> {
             Intent intent = new Intent(UserActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 
     @Override
     public void onBackPressed() {
-        
+        Toast.makeText(this, "Please Logout", Toast.LENGTH_SHORT).show();
     }
 }

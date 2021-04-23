@@ -1,18 +1,33 @@
 package com.example.bankapp.Database;
 
-import androidx.room.Dao;
-import androidx.room.Insert;
-import androidx.room.Query;
 
-import java.util.List;
+import com.j256.ormlite.dao.BaseDaoImpl;
+import com.j256.ormlite.support.ConnectionSource;
 
-@Dao
-public interface UserDAO {
+import java.sql.SQLException;
 
-    @Insert
-    void insert(User user);
+public class UserDAO extends BaseDaoImpl<User, String> {
 
-    @Query("SELECT * FROM user")
-    List<User> getUsers();
+    protected UserDAO(ConnectionSource connectionSource, Class<User> dataClass) throws SQLException {
+        super(connectionSource, dataClass);
+    }
+
+    public User findByEmail(String email) {
+        try {
+            return queryBuilder().where().eq(User.EMAIL, email).queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public User findByAccount(String account) {
+        try {
+            return queryBuilder().where().eq(User.ACCOUNT_NO, account).queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

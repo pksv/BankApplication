@@ -1,53 +1,74 @@
 package com.example.bankapp.Database;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.UUID;
 
-@Entity(tableName = "user")
-public class User implements Parcelable {
+@DatabaseTable(tableName = "user")
+public class User implements Serializable {
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
+    public static final String ID = "id";
 
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-    private int bal;
-    private String email, accountNo, phone, password;
+    public static final String NAME = "name";
 
-    public User(int bal, String email, String accountNo, String phone, String password) {
-        this.bal = bal;
-        this.email = email;
-        this.accountNo = accountNo;
-        this.phone = phone;
-        this.password = password;
+    public static final String BSR_BAL = "bsr_bal";
+
+    public static final String EMAIL = "email";
+
+    public static final String PASSWORD = "password";
+
+    public static final String ACCOUNT_NO = "account_no";
+
+    public static final String PHONE_NUMBER = "phone_number";
+
+    public static final String CREATED_DATE = "created_date";
+
+    public static final String UPDATED_DATE = "updated_date";
+
+    @DatabaseField(id = true, columnName = ID)
+    private String id = UUID.randomUUID().toString();
+
+    @DatabaseField(columnName = NAME, canBeNull = false)
+    private String name;
+
+    @DatabaseField(columnName = BSR_BAL, canBeNull = false)
+    private double bsrBal = 0;
+
+    @DatabaseField(columnName = EMAIL, canBeNull = false)
+    private String email;
+
+    @DatabaseField(columnName = PASSWORD, canBeNull = false)
+    private String password;
+
+    @DatabaseField(columnName = PHONE_NUMBER, canBeNull = false)
+    private String phoneNumber;
+
+    @DatabaseField(columnName = ACCOUNT_NO, canBeNull = false)
+    private String accountNo;
+
+    @DatabaseField(columnName = CREATED_DATE, canBeNull = false)
+    private Date createdDate = new Date();
+
+    @DatabaseField(columnName = UPDATED_DATE, canBeNull = false)
+    private Date updatedDate = new Date();
+
+    public String getId() {
+        return id;
     }
 
-    protected User(Parcel in) {
-        id = in.readInt();
-        bal = in.readInt();
-        email = in.readString();
-        accountNo = in.readString();
-        phone = in.readString();
-        password = in.readString();
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getBal() {
-        return bal;
+    public double getBsrBal() {
+        return bsrBal;
     }
 
-    public void setBal(int bal) {
-        this.bal = bal;
+    public void setBsrBal(double bsrBal) {
+        this.bsrBal = bsrBal;
     }
 
     public String getEmail() {
@@ -58,22 +79,6 @@ public class User implements Parcelable {
         this.email = email;
     }
 
-    public String getAccountNo() {
-        return accountNo;
-    }
-
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -82,29 +87,35 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "bal=" + bal +
-                ", email='" + email + '\'' +
-                ", accountNo='" + accountNo + '\'' +
-                ", phone='" + phone + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeInt(bal);
-        dest.writeString(email);
-        dest.writeString(accountNo);
-        dest.writeString(phone);
-        dest.writeString(password);
+    public String getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 }

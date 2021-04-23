@@ -1,13 +1,20 @@
 package com.example.bankapp.Activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import com.example.bankapp.Database.DataBaseHelper;
+import com.example.bankapp.Database.User;
 import com.example.bankapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -27,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         setSupportActionBar(toolbar);
 
+        if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) ||
+                (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
+        }
+
+
         signUp.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
             startActivity(intent);
@@ -36,12 +49,33 @@ public class MainActivity extends AppCompatActivity {
             email = etEmail.getText().toString();
             password = etPassword.getText().toString();
             Intent intent;
+
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(this, "Enter Email ID", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (TextUtils.isEmpty(password)) {
+                Toast.makeText(this, "Enter Password", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if (email.equals("pksv@admin") && password.equals("pksv")) {
                 intent = new Intent(MainActivity.this, AdminActivity.class);
             } else {
+                User user = DataBaseHelper.getInstance().getUserDAO().findByEmail(email);
+                if (user == null) {
+                    Toast.makeText(this, "Invalid Email!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!TextUtils.equals(user.getPassword(), password)) {
+                    Toast.makeText(this, "Invalid Password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 intent = new Intent(MainActivity.this, UserActivity.class);
             }
             startActivity(intent);
+            finish();
         });
 
     }
@@ -52,5 +86,12 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.btnSignUp);
         signUp = findViewById(R.id.tvSignUp);
         toolbar = findViewById(R.id.toolbar);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        super.onBackPressed();
     }
 }

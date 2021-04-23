@@ -30,44 +30,32 @@
         android:layout_below="@+id/toolbar">
 
         <Button
-            android:id="@+id/btnRateBal"
+            android:id="@+id/btnAddMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="@string/update_balance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.472"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etRemoveMoney" />
+            android:text="@string/add_money"
+            app:layout_constraintBottom_toBottomOf="@+id/btnRemoveMoney"
+            app:layout_constraintEnd_toEndOf="@+id/tvBSR2"
+            app:layout_constraintTop_toTopOf="@+id/btnRemoveMoney"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/tvRate4"
-            android:layout_width="60dp"
+        <Button
+            android:id="@+id/btnRemoveMoney"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remove_money"
-            app:layout_constraintBottom_toBottomOf="@+id/etRemoveMoney"
-            app:layout_constraintEnd_toStartOf="@+id/etRemoveMoney"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnAddMoney"
             app:layout_constraintStart_toStartOf="@+id/tvBSR2"
-            app:layout_constraintTop_toTopOf="@+id/etRemoveMoney" />
+            app:layout_constraintTop_toBottomOf="@+id/etAmount" />
 
         <EditText
-            android:id="@+id/etRemoveMoney"
+            android:id="@+id/etAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="@string/amount_to_be_deducted"
-            android:inputType="numberDecimal"
-            app:layout_constraintEnd_toEndOf="@+id/tvBSR2"
-            app:layout_constraintTop_toBottomOf="@+id/etAddMoney" />
-
-        <EditText
-            android:id="@+id/etAddMoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="@string/amount_to_be_added"
+            android:hint="@string/amount_to_a_d"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="@+id/tvBSR2"
             app:layout_constraintTop_toBottomOf="@+id/etAccountNumber" />
@@ -76,11 +64,11 @@
             android:id="@+id/tvRate3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_money"
-            app:layout_constraintBottom_toBottomOf="@+id/etAddMoney"
-            app:layout_constraintEnd_toStartOf="@+id/etAddMoney"
+            android:text="@string/amount"
+            app:layout_constraintBottom_toBottomOf="@+id/etAmount"
+            app:layout_constraintEnd_toStartOf="@+id/etAmount"
             app:layout_constraintStart_toStartOf="@+id/tvBSR2"
-            app:layout_constraintTop_toTopOf="@+id/etAddMoney" />
+            app:layout_constraintTop_toTopOf="@id/etAmount" />
 
         <TextView
             android:id="@+id/tvRate2"
