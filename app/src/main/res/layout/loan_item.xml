@@ -12,46 +12,47 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/sentDate"
+            android:id="@+id/appDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sent date"
+            android:text="applied date"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/transactionId"
+            android:id="@+id/loanType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Transaction Id"
+            android:text="Loan Type"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/toAccNo"
+            android:id="@+id/loanId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/transactionId"
-            android:text="To Account number"
+            android:layout_below="@id/appDate"
+            android:layout_marginTop="10dp"
+            android:text="loan Id"
             android:textSize="13sp" />
 
         <TextView
-            android:id="@+id/sentAmount"
+            android:id="@+id/period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appDate"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:text="period"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/appAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="amount sent"
+            android:text="Applied Amount"
             android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/sentOrReceived"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sentAmount"
-            android:layout_alignParentEnd="true"
-            android:text="sent or received"
-            android:textSize="13sp" />
 
     </RelativeLayout>
-
 
 </com.google.android.material.card.MaterialCardView>

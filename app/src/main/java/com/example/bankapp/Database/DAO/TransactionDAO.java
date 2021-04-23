@@ -1,7 +1,6 @@
 package com.example.bankapp.Database.DAO;
 
 import com.example.bankapp.Database.Transaction;
-import com.example.bankapp.Database.User;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
 
@@ -14,21 +13,21 @@ public class TransactionDAO extends BaseDaoImpl<Transaction, String> {
         super(connectionSource, dataClass);
     }
 
-    public ArrayList<Transaction> findBySender(String id) {
+    public ArrayList<Transaction> findBySenderReceiver(String id) {
         try {
-            return (ArrayList<Transaction>) queryBuilder().where().eq(User.ID, id).query();
+            return (ArrayList<Transaction>) queryBuilder().where().eq(Transaction.SENDER, id).or().eq(Transaction.RECEIVER, id).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public ArrayList<Transaction> findByReceiver(String id) {
-        try {
-            return (ArrayList<Transaction>) queryBuilder().where().eq(User.ID, id).query();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public ArrayList<Transaction> findByReceiver(String id) {
+//        try {
+//            return (ArrayList<Transaction>) queryBuilder().where().eq(Transaction.RECEIVER, id).query();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

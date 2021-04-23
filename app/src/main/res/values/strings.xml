@@ -13,7 +13,7 @@
     <string name="new_rate">New Rate</string>
     <string name="account_no">Account No.</string>
     <string name="add_money">Add Money</string>
-    <string name="remove_money">Remove Money</string>
+    <string name="deduct_money">Deduct Money</string>
     <string name="amount_to_a_d">Amount to Add/Deduct</string>
     <string name="enter_account_number">Enter Account Number</string>
     <string name="update_bsr_conversion_rate">Update BSR Conversion Rate</string>
@@ -30,7 +30,22 @@
     <string name="bsr_balance">BSR Balance :</string>
     <string name="balance">Balance : $1000</string>
     <string name="no_transactions">No Transactions</string>
-    <string name="your_recent_transactions">Your Recent Transactions</string>
+    <string name="enter_insurance_amount">Enter Insurance Amount(BSR)</string>
+    <string name="type">Type</string>
+    <string name="apply">Apply</string>
+    <string name="your_recent_loan_applications">Your Recent Loan Applications</string>
+    <string name="your_recent_insurance_applications">Your Recent Insurance Applications</string>
+    <string name="new_insurance_application">New Insurance Application</string>
+    <string name="new_loan_application">New Loan Application</string>
+    <string name="no_loan_history">No Loan History</string>
+    <string name="enter_loan_amount">Enter Loan Amount</string>
+    <string name="enter_nominee_name">Enter Nominee Name</string>
+    <string name="no_insurance_history">No Insurance History</string>
+    <string name="enter_loan_period">Enter Loan Period(Months)</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="enter_receiver_account_no">Enter Receiver Account No.</string>
+    <string name="send">Send</string>
+    <string name="enter_amount_to_be_sent">Enter Amount to be Sent</string>
     <string-array name="currency">
         <item>USD</item>
         <item>INR</item>
@@ -38,5 +53,20 @@
         <item>GBP</item>
         <item>AED</item>
         <item>AUD</item>
+    </string-array>
+
+    <string-array name="insurance_type">
+        <item>Term Insurance</item>
+        <item>Medical Insurance</item>
+        <item>Mobile Insurance</item>
+        <item>Vehicle Insurance</item>
+        <item>Life Insurance</item>
+    </string-array>
+
+    <string-array name="loan_type">
+        <item>Vehicle Loan</item>
+        <item>Things Loan</item>
+        <item>Property Loan</item>
+        <item>Gold Loan</item>
     </string-array>
 </resources>

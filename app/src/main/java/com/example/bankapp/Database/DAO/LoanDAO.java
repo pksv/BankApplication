@@ -1,20 +1,20 @@
 package com.example.bankapp.Database.DAO;
 
 import com.example.bankapp.Database.LoanData;
-import com.example.bankapp.Database.User;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LoanDAO extends BaseDaoImpl<LoanData, String> {
     public LoanDAO(ConnectionSource connectionSource, Class<LoanData> dataClass) throws SQLException {
         super(connectionSource, dataClass);
     }
 
-    public LoanData findByUserId(String id) {
+    public ArrayList<LoanData> findByUserId(String id) {
         try {
-            return queryBuilder().where().eq(User.ID, id).queryForFirst();
+            return (ArrayList<LoanData>) queryBuilder().where().eq(LoanData.USER_ID, id).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }

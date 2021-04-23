@@ -19,6 +19,8 @@ public class LoanData {
 
     public static final String APPL_DATE = "appl_date";
 
+    public static final String PERIOD = "period";
+
     public static final String INTEREST = "interest";
 
     public static final String CLEAR_DATE = "clear_date";
@@ -42,6 +44,9 @@ public class LoanData {
 
     @DatabaseField(canBeNull = false, columnName = INTEREST)
     private double interest;
+
+    @DatabaseField(canBeNull = false, columnName = PERIOD)
+    private int period;
 
     @DatabaseField(canBeNull = false, columnName = CLEAR_DATE)
     private Date clearDate;
@@ -100,6 +105,14 @@ public class LoanData {
 
     public double getLoanAmt() {
         return loanAmt;
+    }
+
+    public int getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(int period) {
+        this.period = period;
     }
 
     public void setLoanAmt(double loanAmt) {

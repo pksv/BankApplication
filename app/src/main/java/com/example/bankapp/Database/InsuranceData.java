@@ -29,20 +29,66 @@ public class InsuranceData {
 
     @DatabaseField(id = true, columnName = ID)
     private final String id = UUID.randomUUID().toString();
+
     @DatabaseField(canBeNull = false, columnName = APPL_DATE)
     private final Date applDate = new Date();
+
     @DatabaseField(columnName = UPDATED_DATE, canBeNull = false)
     private final Date updatedDate = new Date();
+
     @DatabaseField(canBeNull = false, columnName = USER_ID)
     private String userId;
+
     @DatabaseField(canBeNull = false, columnName = INSURANCE_AMT)
     private double insuranceAmt;
+
     @DatabaseField(canBeNull = false, columnName = INSURANCE_TYPE)
     private String insuranceType;
-    @DatabaseField(canBeNull = false, columnName = MATURE_AMT)
-    private double matureAmount;
-    @DatabaseField(canBeNull = false, columnName = MATURE_DATE)
-    private Date matureDate;
+
     @DatabaseField(canBeNull = false, columnName = NOMINEE)
     private String nominee;
+
+    public String getId() {
+        return id;
+    }
+
+    public Date getApplDate() {
+        return applDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public double getInsuranceAmt() {
+        return insuranceAmt;
+    }
+
+    public void setInsuranceAmt(double insuranceAmt) {
+        this.insuranceAmt = insuranceAmt;
+    }
+
+    public String getInsuranceType() {
+        return insuranceType;
+    }
+
+    public void setInsuranceType(String insuranceType) {
+        this.insuranceType = insuranceType;
+    }
+
+    public String getNominee() {
+        return nominee;
+    }
+
+    public void setNominee(String nominee) {
+        this.nominee = nominee;
+    }
 }

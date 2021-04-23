@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bankapp.Database.DataBaseHelper;
 import com.example.bankapp.Database.SharedPreferences.LoginPreferences;
@@ -27,7 +28,9 @@ public class UserHome extends AppCompatActivity {
     private TextView tvBsrBal, tvAccount, tvBal;
     private BottomNavigationView bottomNavigationView;
     private Spinner currencySpinner;
-    private RecyclerView recyclerView;
+    private Button send;
+    private EditText receiverAcc, sendingAmount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,11 +88,9 @@ public class UserHome extends AppCompatActivity {
         toolbar.setTitle("Welcome, " + name);
         tvAccount.setText(String.format("Account Number : %s", user.getAccountNo()));
         tvBsrBal.setText(String.format("BSR Balance : %s", user.getBsrBal()));
-        tvBal.setText(String.format("Balance : $%s", bal));
-
 
         logout.setOnClickListener(v -> {
-            Intent intent = new Intent(UserHome.this, MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         });
@@ -102,17 +103,17 @@ public class UserHome extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.insurance:
-                    Intent insuranceIntent = new Intent(UserHome.this, InsuranceActivity.class);
+                    Intent insuranceIntent = new Intent(this, InsuranceActivity.class);
                     insuranceIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(insuranceIntent);
                     break;
-                case R.id.sendMoney:
-                    Intent sendMoneyIntent = new Intent(UserHome.this, TransactionActivity.class);
+                case R.id.transactionHistory:
+                    Intent sendMoneyIntent = new Intent(this, TransactionActivity.class);
                     sendMoneyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(sendMoneyIntent);
                     break;
                 case R.id.loan:
-                    Intent loanIntent = new Intent(UserHome.this, LoanActivity.class);
+                    Intent loanIntent = new Intent(this, LoanActivity.class);
                     loanIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(loanIntent);
                     break;
@@ -131,7 +132,6 @@ public class UserHome extends AppCompatActivity {
         tvBal = findViewById(R.id.tvBal);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         currencySpinner = findViewById(R.id.currencySpinner);
-        recyclerView = findViewById(R.id.recyclerView);
     }
 
     @Override

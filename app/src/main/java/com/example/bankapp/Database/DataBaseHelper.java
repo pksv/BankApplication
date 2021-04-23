@@ -73,7 +73,7 @@ public class DataBaseHelper extends OrmLiteSqliteOpenHelper {
         return loanDAO;
     }
 
-    private TransactionDAO getTransactionDAO() {
+    public TransactionDAO getTransactionDAO() {
         if (transactionDAO == null) {
             try {
                 transactionDAO = new TransactionDAO(connectionSource, Transaction.class);

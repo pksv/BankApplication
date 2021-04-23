@@ -14,10 +14,10 @@
         android:title="@string/insurance_subscription" />
 
     <item
-        android:id="@+id/sendMoney"
+        android:id="@+id/transactionHistory"
         android:icon="@mipmap/send_money"
         android:iconTint="@color/button"
-        android:title="@string/send_money" />
+        android:title="@string/transaction_history" />
 
     <item
         android:icon="@drawable/ic_loan"

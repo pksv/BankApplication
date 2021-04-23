@@ -56,7 +56,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         logout = findViewById(R.id.logout);
         btnAddMoney = findViewById(R.id.btnAddMoney);
         btnRateUpdate = findViewById(R.id.btnRateUpdate);
-        btnRemoveMoney = findViewById(R.id.btnRemoveMoney);
+        btnRemoveMoney = findViewById(R.id.btnDeductMoney);
         etNewRate = findViewById(R.id.etNewRate);
         etAccountNumber = findViewById(R.id.etAccountNumber);
         etAmount = findViewById(R.id.etAmount);
