@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 LoginPreferences.getInstance().setUserId(email);
                 LoginPreferences.getInstance().setName(user.getName());
-                intent = new Intent(MainActivity.this, UserActivity.class);
+                intent = new Intent(MainActivity.this, UserHome.class);
             }
             startActivity(intent);
             finish();

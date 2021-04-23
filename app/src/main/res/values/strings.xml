@@ -27,4 +27,16 @@
     <string name="home">Home</string>
     <string name="amount">Amount</string>
     <string name="name">Name</string>
+    <string name="bsr_balance">BSR Balance :</string>
+    <string name="balance">Balance : $1000</string>
+    <string name="no_transactions">No Transactions</string>
+    <string name="your_recent_transactions">Your Recent Transactions</string>
+    <string-array name="currency">
+        <item>USD</item>
+        <item>INR</item>
+        <item>JPY</item>
+        <item>GBP</item>
+        <item>AED</item>
+        <item>AUD</item>
+    </string-array>
 </resources>

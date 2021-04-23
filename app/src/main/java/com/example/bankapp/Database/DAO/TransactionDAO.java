@@ -6,6 +6,7 @@ import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TransactionDAO extends BaseDaoImpl<Transaction, String> {
 
@@ -13,18 +14,18 @@ public class TransactionDAO extends BaseDaoImpl<Transaction, String> {
         super(connectionSource, dataClass);
     }
 
-    public Transaction findBySender(String id) {
+    public ArrayList<Transaction> findBySender(String id) {
         try {
-            return queryBuilder().where().eq(User.ID, id).queryForFirst();
+            return (ArrayList<Transaction>) queryBuilder().where().eq(User.ID, id).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public Transaction findByReceiver(String id) {
+    public ArrayList<Transaction> findByReceiver(String id) {
         try {
-            return queryBuilder().where().eq(User.ID, id).queryForFirst();
+            return (ArrayList<Transaction>) queryBuilder().where().eq(User.ID, id).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }

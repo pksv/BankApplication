@@ -105,7 +105,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
             LoginPreferences.getInstance().setUserId(email);
             LoginPreferences.getInstance().setName(user.getName());
-            Intent intent = new Intent(SignUpActivity.this, UserActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, UserHome.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         });
