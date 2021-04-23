@@ -20,9 +20,10 @@
 
         <TextView
             android:id="@+id/loanType"
+            android:layout_below="@+id/appDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:text="Loan Type"
             android:textSize="18sp" />
 
@@ -30,8 +31,7 @@
             android:id="@+id/loanId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appDate"
-            android:layout_marginTop="10dp"
+            android:layout_below="@id/loanType"
             android:text="loan Id"
             android:textSize="13sp" />
 
@@ -39,17 +39,18 @@
             android:id="@+id/period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appDate"
+            android:layout_below="@id/appAmount"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
             android:text="period"
             android:textSize="13sp" />
 
         <TextView
             android:id="@+id/appAmount"
             android:layout_width="wrap_content"
+            android:layout_below="@+id/appDate"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
             android:text="Applied Amount"
             android:textSize="18sp" />
 

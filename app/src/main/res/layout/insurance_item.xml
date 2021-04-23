@@ -22,16 +22,16 @@
             android:id="@+id/insuranceType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/appDate"
             android:text="Insurance Type"
+            android:layout_marginTop="10dp"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/insuranceId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appDate"
-            android:layout_marginTop="10dp"
+            android:layout_below="@id/insuranceType"
             android:text="Insurance Id"
             android:textSize="13sp" />
 
@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:text="Applied Amount"
+            android:layout_below="@+id/appDate"
             android:textSize="18sp" />
 
         <TextView
@@ -49,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/appAmount"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
             android:text="nominee"
             android:textSize="13sp" />
 

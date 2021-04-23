@@ -23,8 +23,6 @@ public class LoanData {
 
     public static final String INTEREST = "interest";
 
-    public static final String CLEAR_DATE = "clear_date";
-
     public static final String UPDATED_DATE = "updated_date";
 
     @DatabaseField(id = true, columnName = ID)
@@ -43,13 +41,10 @@ public class LoanData {
     private Date applDate = new Date();
 
     @DatabaseField(canBeNull = false, columnName = INTEREST)
-    private double interest;
+    private double interest = 5.0;
 
     @DatabaseField(canBeNull = false, columnName = PERIOD)
     private int period;
-
-    @DatabaseField(canBeNull = false, columnName = CLEAR_DATE)
-    private Date clearDate;
 
     @DatabaseField(columnName = UPDATED_DATE, canBeNull = false)
     private Date updatedDate = new Date();
@@ -70,7 +65,6 @@ public class LoanData {
         this.userId = userId;
     }
 
-
     public String getLoanType() {
         return loanType;
     }
@@ -85,14 +79,6 @@ public class LoanData {
 
     public void setApplDate(Date applDate) {
         this.applDate = applDate;
-    }
-
-    public Date getClearDate() {
-        return clearDate;
-    }
-
-    public void setClearDate(Date clearDate) {
-        this.clearDate = clearDate;
     }
 
     public Date getUpdatedDate() {

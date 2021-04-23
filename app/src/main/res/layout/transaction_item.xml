@@ -13,16 +13,17 @@
 
         <TextView
             android:id="@+id/sentDate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="sent date"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/transactionId"
+            android:layout_below="@id/sentDate"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Transaction Id"
             android:textSize="18sp" />
 
@@ -38,6 +39,8 @@
             android:id="@+id/sentAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/sentDate"
+            android:layout_marginTop="10dp"
             android:layout_alignParentEnd="true"
             android:text="amount sent"
             android:textSize="18sp" />

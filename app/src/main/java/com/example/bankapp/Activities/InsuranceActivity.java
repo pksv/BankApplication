@@ -91,7 +91,7 @@ public class InsuranceActivity extends AppCompatActivity {
 
             double bsrBal = user.getBsrBal();
 
-            if (Double.parseDouble(insuranceAmt) < bsrBal) {
+            if (Double.parseDouble(insuranceAmt) > bsrBal) {
                 Toast.makeText(this, "Insufficient Balance", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -105,6 +105,7 @@ public class InsuranceActivity extends AppCompatActivity {
 
             try {
                 DataBaseHelper.getInstance().getInsuranceDAO().createOrUpdate(insuranceData);
+                DataBaseHelper.getInstance().getUserDAO().createOrUpdate(user);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

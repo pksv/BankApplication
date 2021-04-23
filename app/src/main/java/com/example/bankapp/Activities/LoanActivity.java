@@ -55,7 +55,7 @@ public class LoanActivity extends AppCompatActivity {
         loanTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getId() == R.id.insuranceTypeSpinner) {
+                if (parent.getId() == R.id.loanTypeSpinner) {
                     value = parent.getItemAtPosition(position).toString();
                 }
             }
@@ -98,6 +98,7 @@ public class LoanActivity extends AppCompatActivity {
 
             try {
                 DataBaseHelper.getInstance().getLoanDAO().createOrUpdate(loanData);
+                DataBaseHelper.getInstance().getUserDAO().createOrUpdate(user);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
