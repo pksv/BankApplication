@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -104,9 +105,16 @@ public class InsuranceActivity extends AppCompatActivity {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            Intent intent = new Intent(this, UserHome.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("Alert")
+                    .setMessage("Insurance Applied!!!")
+                    .setPositiveButton("Okay", (dialogInterface, i) -> {
+                        Intent intent = new Intent(this, UserHome.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    });
+            builder.create().show();
+
         });
 
         InsuranceAdapter iAdapter = new InsuranceAdapter(this, DataBaseHelper.getInstance().getInsuranceDAO().findByUserId(user.getId()));

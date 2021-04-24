@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bankapp.Database.DataBaseHelper;
@@ -128,6 +129,14 @@ public class UserHome extends AppCompatActivity {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("Alert")
+                    .setMessage("Money Sent")
+                    .setPositiveButton("Okay", (dialogInterface, i) -> {
+                        receiverAcc.setText("");
+                        sendingAmount.setText("");
+                    });
+            builder.create().show();
         });
 
         logout.setOnClickListener(v -> {

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bankapp.Database.DataBaseHelper;
@@ -105,9 +106,15 @@ public class SignUpActivity extends AppCompatActivity {
             }
             LoginPreferences.getInstance().setUserId(email);
             LoginPreferences.getInstance().setName(user.getName());
-            Intent intent = new Intent(SignUpActivity.this, UserHome.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle("Alert")
+                    .setMessage("Sign Up Successful!!")
+                    .setPositiveButton("Okay", (dialogInterface, i) -> {
+                        Intent intent = new Intent(SignUpActivity.this, UserHome.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    });
+            builder.create().show();
         });
     }
 
