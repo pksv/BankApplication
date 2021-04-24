@@ -34,8 +34,15 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull InsuranceAdapter.ViewHolder holder, final int position) {
+        if (insuranceDataList == null) {
+            holder.recyclerView.setVisibility(View.GONE);
+            holder.noInsuranceHistory.setVisibility(View.VISIBLE);
+            return;
+        }
         InsuranceData insuranceData = insuranceDataList.get(position);
         if (insuranceData != null) {
+            holder.recyclerView.setVisibility(View.VISIBLE);
+            holder.noInsuranceHistory.setVisibility(View.GONE);
             holder.appAmount.setText(String.valueOf(insuranceData.getInsuranceAmt()));
             holder.appDate.setText(String.valueOf(insuranceData.getApplDate()));
             holder.insuranceId.setText(insuranceData.getId());
@@ -56,10 +63,14 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.View
         private final TextView appAmount;
         private final TextView insuranceId;
         private final TextView nominee;
+        private final TextView noInsuranceHistory;
+        private final RecyclerView recyclerView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            recyclerView = itemView.findViewById(R.id.recyclerView);
+            noInsuranceHistory = itemView.findViewById(R.id.noInsuranceHistory);
             appDate = itemView.findViewById(R.id.appDate);
             insuranceType = itemView.findViewById(R.id.insuranceType);
             appAmount = itemView.findViewById(R.id.appAmount);

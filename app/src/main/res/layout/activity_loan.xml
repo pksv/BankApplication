@@ -52,13 +52,13 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recentLoanTitle">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView" />
@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="@string/enter_loan_amount"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newLoanTitle" />
@@ -92,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="@string/enter_loan_period"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/etLoanAmt"
         app:layout_constraintStart_toStartOf="@+id/etLoanAmt"
         app:layout_constraintTop_toBottomOf="@+id/loanTypeSpinner" />

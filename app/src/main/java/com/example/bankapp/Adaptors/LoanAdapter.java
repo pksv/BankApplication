@@ -34,13 +34,18 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull LoanAdapter.ViewHolder holder, final int position) {
+        if (loanDataList == null) {
+            holder.recyclerView.setVisibility(View.GONE);
+            holder.noLoanHistory.setVisibility(View.VISIBLE);
+            return;
+        }
         LoanData loanData = loanDataList.get(position);
         if (loanData != null) {
             holder.appAmount.setText(String.valueOf(loanData.getLoanAmt()));
             holder.appDate.setText(String.valueOf(loanData.getApplDate()));
             holder.loanId.setText(loanData.getId());
             holder.loanType.setText(loanData.getLoanType());
-            holder.period.setText(loanData.getPeriod());
+            holder.period.setText(String.valueOf(loanData.getPeriod()));
         }
     }
 
@@ -56,10 +61,14 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         private final TextView appAmount;
         private final TextView loanId;
         private final TextView period;
+        private final TextView noLoanHistory;
+        private final RecyclerView recyclerView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            recyclerView = itemView.findViewById(R.id.recyclerView);
+            noLoanHistory = itemView.findViewById(R.id.noLoanHistory);
             appDate = itemView.findViewById(R.id.appDate);
             loanType = itemView.findViewById(R.id.loanType);
             appAmount = itemView.findViewById(R.id.appAmount);

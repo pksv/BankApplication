@@ -14,8 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankApp">
         <activity android:name=".Activities.TransactionActivity" />
-        <activity android:name=".Activities.LoanActivity" />
-        <activity android:name=".Activities.InsuranceActivity" />
+        <activity
+            android:name=".Activities.LoanActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".Activities.InsuranceActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SignUpActivity" />
-        <activity android:name=".Activities.UserHome" />
-        <activity android:name=".Activities.AdminActivity" />
-        <activity android:name=".Activities.MainActivity">
+        <activity
+            android:name=".Activities.SignUpActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".Activities.UserHome"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".Activities.AdminActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

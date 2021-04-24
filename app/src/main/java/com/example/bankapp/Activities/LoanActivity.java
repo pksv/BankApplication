@@ -9,11 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,17 +24,14 @@ import com.example.bankapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class LoanActivity extends AppCompatActivity {
 
     private Spinner loanTypeSpinner;
-    private TextView noLoanHistory;
     private Button btnApply;
     private String value;
     private EditText etLoanAmt, etPeriod;
     private RecyclerView recyclerView;
-    private NestedScrollView svRecyclerView;
     private BottomNavigationView bottomNavigationView;
     private ImageView logout;
 
@@ -107,14 +102,7 @@ public class LoanActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ArrayList<LoanData> loanDataList = DataBaseHelper.getInstance().getLoanDAO().findByUserId(user.getId());
-
-        if (loanDataList == null) {
-            svRecyclerView.setVisibility(View.GONE);
-            noLoanHistory.setVisibility(View.VISIBLE);
-            return;
-        }
-        LoanAdapter lAdapter = new LoanAdapter(this, loanDataList);
+        LoanAdapter lAdapter = new LoanAdapter(this, DataBaseHelper.getInstance().getLoanDAO().findByUserId(user.getId()));
         recyclerView.setAdapter(lAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -151,8 +139,6 @@ public class LoanActivity extends AppCompatActivity {
         etLoanAmt = findViewById(R.id.etLoanAmt);
         etPeriod = findViewById(R.id.etPeriod);
         recyclerView = findViewById(R.id.recyclerView);
-        svRecyclerView = findViewById(R.id.svRecyclerView);
-        noLoanHistory = findViewById(R.id.noLoanHistory);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         logout = findViewById(R.id.logout);
     }

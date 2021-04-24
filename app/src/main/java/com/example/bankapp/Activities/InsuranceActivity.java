@@ -9,11 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,17 +24,14 @@ import com.example.bankapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class InsuranceActivity extends AppCompatActivity {
 
     private Spinner insuranceTypeSpinner;
-    private TextView noInsuranceHistory;
     private Button btnApply;
     private String value;
     private EditText etInsuranceAmt, etNominee;
     private RecyclerView recyclerView;
-    private NestedScrollView svRecyclerView;
     private BottomNavigationView bottomNavigationView;
     private ImageView logout;
 
@@ -114,14 +109,7 @@ public class InsuranceActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ArrayList<InsuranceData> insuranceDataList = DataBaseHelper.getInstance().getInsuranceDAO().findByUserId(user.getId());
-
-        if (insuranceDataList == null) {
-            svRecyclerView.setVisibility(View.GONE);
-            noInsuranceHistory.setVisibility(View.VISIBLE);
-            return;
-        }
-        InsuranceAdapter iAdapter = new InsuranceAdapter(this, insuranceDataList);
+        InsuranceAdapter iAdapter = new InsuranceAdapter(this, DataBaseHelper.getInstance().getInsuranceDAO().findByUserId(user.getId()));
         recyclerView.setAdapter(iAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -133,8 +121,6 @@ public class InsuranceActivity extends AppCompatActivity {
         etInsuranceAmt = findViewById(R.id.etInsuranceAmt);
         etNominee = findViewById(R.id.etNominee);
         recyclerView = findViewById(R.id.recyclerView);
-        svRecyclerView = findViewById(R.id.svRecyclerView);
-        noInsuranceHistory = findViewById(R.id.noInsuranceHistory);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         logout = findViewById(R.id.logout);
     }
