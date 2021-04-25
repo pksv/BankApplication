@@ -61,24 +61,25 @@ public class UserHome extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (parent.getId() == R.id.currencySpinner) {
                     String value = parent.getItemAtPosition(position).toString();
+                    double rate = AdminPreferences.getInstance().getBSRRate();
                     switch (value) {
                         case "INR":
-                            tvBal.setText(String.format("Balance : ₹%s", (bal * 100 * 75.11)));
+                            tvBal.setText(String.format("Balance : ₹%s", (bal * rate * 75.11)));
                             break;
                         case "JPY":
-                            tvBal.setText(String.format("Balance : ¥%s", (bal * 100 * 108.15)));
+                            tvBal.setText(String.format("Balance : ¥%s", (bal * rate * 108.15)));
                             break;
                         case "GBP":
-                            tvBal.setText(String.format("Balance : £%s", (bal * 100 * 0.72)));
+                            tvBal.setText(String.format("Balance : £%s", (bal * rate * 0.72)));
                             break;
                         case "AED":
-                            tvBal.setText(String.format("Balance : د.إ%s", (bal * 100 * 3.67)));
+                            tvBal.setText(String.format("Balance : د.إ%s", (bal * rate * 3.67)));
                             break;
                         case "AUD":
-                            tvBal.setText(String.format("Balance : A$%s", (bal * 100 * 1.29)));
+                            tvBal.setText(String.format("Balance : A$%s", (bal * rate * 1.29)));
                             break;
                         default:
-                            tvBal.setText(String.format("Balance : $%s", (bal * 100)));
+                            tvBal.setText(String.format("Balance : $%s", (bal * rate)));
                             break;
                     }
                 }
@@ -86,7 +87,7 @@ public class UserHome extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                tvBal.setText(String.format("Balance : $%s", (bal * 100)));
+                tvBal.setText(String.format("Balance : $%s", (bal * AdminPreferences.getInstance().getBSRRate())));
             }
         });
 
